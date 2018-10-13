@@ -1,0 +1,98 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for userCreate",
+      "Zome": "task marketplace",
+      "FnName": "userCreate",
+      "Input": {
+        "id": "1sbc593bcx1",
+        "username": "leon",
+        "vots": 50,
+        "password": "1xH7dE4Lxc2s$x"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for userRead",
+      "Zome": "task marketplace",
+      "FnName": "userRead",
+      "Input": "%h%",
+      "Output": {
+        "id": "1sbc593bcx1",
+        "username": "leon",
+        "vots": 50,
+        "password": "1xH7dE4Lxc2s$x"
+      }
+    },
+    {
+      "Convey": "auto-generated test for userUpdate",
+      "Zome": "task marketplace",
+      "FnName": "userUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for userDelete",
+      "Zome": "task marketplace",
+      "FnName": "userDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for taskCreate",
+      "Zome": "task marketplace",
+      "FnName": "taskCreate",
+      "Input": {
+        "id": "12c23b23r",
+        "title": "clean the bathroom!",
+        "description": "it stinks!",
+        "pool": 100,
+        "createdAt": "2018-10-12T19:00:00",
+        "status": "open"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for taskRead",
+      "Zome": "task marketplace",
+      "FnName": "taskRead",
+      "Input": "%h%",
+      "Output": {
+        "id": "12c23b23r",
+        "title": "clean the bathroom!",
+        "description": "it stinks!",
+        "pool": 100,
+        "createdAt": "2018-10-12T19:00:00",
+        "status": "open"
+      }
+    },
+    {
+      "Convey": "auto-generated test for taskUpdate",
+      "Zome": "task marketplace",
+      "FnName": "taskUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for taskDelete",
+      "Zome": "task marketplace",
+      "FnName": "taskDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for transferVots",
+      "Zome": "task marketplace",
+      "FnName": "transferVots",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for authenticate",
+      "Zome": "task marketplace",
+      "FnName": "authenticate",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}

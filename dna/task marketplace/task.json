@@ -1,0 +1,76 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "pool",
+    "createdAt",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "12c23b23r"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The Title Schema",
+      "default": "",
+      "examples": [
+        "clean the bathroom!"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema",
+      "default": "",
+      "examples": [
+        "it stinks!"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "pool": {
+      "$id": "#/properties/pool",
+      "type": "integer",
+      "title": "The Pool Schema",
+      "default": 0,
+      "examples": [
+        100
+      ]
+    },
+    "createdAt": {
+      "$id": "#/properties/createdAt",
+      "type": "string",
+      "title": "The Createdat Schema",
+      "default": "",
+      "examples": [
+        "2018-10-12T19:00:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "title": "The Status Schema",
+      "default": "",
+      "examples": [
+        "open"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

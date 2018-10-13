@@ -1,0 +1,54 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "id",
+    "username",
+    "vots",
+    "password"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "1sbc593bcx1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "username": {
+      "$id": "#/properties/username",
+      "type": "string",
+      "title": "The Username Schema",
+      "default": "",
+      "examples": [
+        "leon"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "vots": {
+      "$id": "#/properties/vots",
+      "type": "integer",
+      "title": "The Vots Schema",
+      "default": 0,
+      "examples": [
+        50
+      ]
+    },
+    "password": {
+      "$id": "#/properties/password",
+      "type": "string",
+      "title": "The Password Schema",
+      "default": "",
+      "examples": [
+        "1xH7dE4Lxc2s$x"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

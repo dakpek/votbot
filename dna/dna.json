@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "UUID": "76766098-9061-4be1-9a2f-27cbd2a4db1b",
+  "Name": "votbot",
+  "Properties": {
+    "description": "a governance mechanism for cooperative organizations",
+    "language": "en"
+  },
+  "PropertiesSchemaFile": "properties_schema.json",
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+  "Zomes": [
+    {
+      "Name": "task marketplace",
+      "Description": "a marketplace where members can earn vots for tasks.",
+      "RibosomeType": "js",
+      "CodeFile": "task marketplace.js",
+      "Entries": [
+        {
+          "Name": "user",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "private",
+          "SchemaFile": "user.json"
+        },
+        {
+          "Name": "task",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "task.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "userCreate",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "userRead",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "userUpdate",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "userDelete",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "taskCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "taskRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "taskUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "taskDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "transferVots",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "authenticate",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    }
+  ]
+}
