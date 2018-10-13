@@ -41,12 +41,23 @@ function userDelete(userHash) {
 
 function taskCreate(taskEntry) {
   var taskHash = commit("task", taskEntry);
+  commit('taskLink', {
+    Links: [{ Base: App.Agent.Hash, Link: taskHash, Tag: "taskLink" }]
+  });
+  commit('taskLink', {
+    Links: [{ Base: App.DNA.Hash, Link: taskHash, Tag: "allTasks" }]
+  });
   return taskHash;
 }
 
 function taskRead(taskHash) {
-  var task = get(taskHash);
-  return task;
+  var taskHash = getLinks(App.Agent.Hash, "taskLink");
+  var allTasks = getLinks(App.DNA.Hash, "allTasks");
+  var allTasksFull = getLinks(App.DNA.Hash, "allTasks", {Load: true});
+  console.log('all users: ', JSON.stringify(allTasks))
+  console.log('me: ', JSON.stringify(taskHash))
+  console.log('all tasks full: ', allTasksFull)
+  return allTasksFull;
 }
 
 function taskUpdate(taskHash) {
@@ -117,6 +128,11 @@ function validateCommit(entryName, entry, header, pkg, sources) {
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
       return true;
+    case "taskLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return true;
     default:
       // invalid entry name
       return true;
@@ -145,6 +161,11 @@ function validatePut(entryName, entry, header, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return true;
     case "userLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return true;
+    case "taskLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
@@ -182,6 +203,11 @@ function validateMod(entryName, entry, header, replaces, pkg, sources) {
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
       return true;
+    case "taskLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return true;
     default:
       // invalid entry name
       return true;
@@ -209,6 +235,11 @@ function validateDel(entryName, hash, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return true;
     case "userLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return true;
+    case "taskLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
@@ -241,6 +272,11 @@ function validateLink(entryName, baseHash, links, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return true;
     case "userLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return true;
+    case "taskLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!

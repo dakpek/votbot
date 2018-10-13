@@ -15,7 +15,7 @@
       "Name": "taskMarketplace",
       "Description": "a marketplace where members can earn vots for tasks.",
       "RibosomeType": "js",
-      "CodeFile": "taskmarketplace.js",
+      "CodeFile": "taskMarketplace.js",
       "Entries": [
         {
           "Name": "user",
@@ -33,6 +33,12 @@
         },
         {
           "Name": "userLink",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "taskLink",
           "Required": true,
           "DataFormat": "links",
           "Sharing": "public"
@@ -82,7 +88,7 @@
         {
           "Name": "transferVots",
           "CallingType": "json",
-          "Exposure": "public"
+          "Exposure": ""
         },
         {
           "Name": "authenticate",
