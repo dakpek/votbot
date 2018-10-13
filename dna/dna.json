@@ -88,7 +88,7 @@
         {
           "Name": "transferVots",
           "CallingType": "json",
-          "Exposure": ""
+          "Exposure": "public"
         },
         {
           "Name": "authenticate",

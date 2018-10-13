@@ -28,9 +28,11 @@ function userRead() {
   return user;
 }
 
-function userUpdate(userHash) {
-  var sampleValue = { "username": "dakpek", "vots": 42, "extraField": true };
-  var userOutHash = update("user", sampleValue, userHash);
+function userUpdate(params) {
+  var userHash = getLinks(App.Agent.Hash, "userLink")[0].Hash;
+  var user = get(userHash);
+  user[params.target] = params.newValue
+  var userOutHash = update("user", user, userHash);
   return userOutHash;
 }
 
@@ -47,22 +49,25 @@ function taskCreate(taskEntry) {
   commit('taskLink', {
     Links: [{ Base: App.DNA.Hash, Link: taskHash, Tag: "allTasks" }]
   });
+  console.log(taskHash);
   return taskHash;
 }
 
-function taskRead(taskHash) {
+function taskRead() {
   var taskHash = getLinks(App.Agent.Hash, "taskLink");
   var allTasks = getLinks(App.DNA.Hash, "allTasks");
-  var allTasksFull = getLinks(App.DNA.Hash, "allTasks", {Load: true});
+  var allTasksFull = getLinks(App.DNA.Hash, "allTasks", { Load: true });
   console.log('all users: ', JSON.stringify(allTasks))
   console.log('me: ', JSON.stringify(taskHash))
   console.log('all tasks full: ', allTasksFull)
   return allTasksFull;
 }
 
-function taskUpdate(taskHash) {
-  var sampleValue = { "id": "12c23b23r", "title": "clean the bathroom!", "description": "it stinks!", "pool": 100, "createdAt": "2018-10-12T19:00:00", "status": "open", "extraField": true };
-  var taskOutHash = update("task", sampleValue, taskHash);
+function taskUpdate(params) {
+  var taskHash = params.taskHash;
+  var task = get(taskHash);
+  task[params.target] = params.newValue
+  var taskOutHash = update("task", task, taskHash);
   return taskOutHash;
 }
 
@@ -71,9 +76,36 @@ function taskDelete(taskHash) {
   return result;
 }
 
-function transferVots(params) {
+function  transferVots(params) {
   // your custom code here
-  return {};
+  //params ={receiverHash,amount}
+  //If (transfer is user --> task ) {amount<0}, else if (transfer is task --> user) {amount>0}
+  var user = userRead();
+  var task = taskRead(params.receiverHash);
+  console.log("user: " + JSON.stringify(user))
+  console.log("task: " + JSON.stringify(task))
+  user.vots = Number(Number(user.vots) + Number(params.amount))
+  console.log('task----', task[0].Entry.pool)
+  var pool = task[0].Entry.pool
+  console.log('pool----', pool)
+  pool = Number(pool - Number(params.amount))
+  console.log("user.vots:", user.vots)
+  console.log("task.pool:", pool)
+  userUpdate({
+    target: 'vots',
+    newValue: Number(user.vots)
+  });
+  taskUpdate({
+    taskHash: params.receiverHash,
+    target: 'pool',
+    newValue: pool
+  });
+
+  console.log("returning: " + JSON.stringify(user) + JSON.stringify(task));
+  console.log("LOGGING READ FUNCTIONS USER - TASK")
+  console.log(JSON.stringify(userRead()))
+  console.log(JSON.stringify(taskRead()))
+  return "success";
 }
 
 function authenticate(params) {
@@ -94,7 +126,15 @@ function genesis() {
   userCreate({
     "username": JSON.stringify(App.Agent.Hash),
     "vots": 50
-  });
+  })
+  taskCreate({
+    "id": "13",
+    "title": "nice title",
+    "description": "testing",
+    "pool": 10,
+    "createdAt": "sometime",
+    "status": "open"
+  })
   return true;
 }
 
