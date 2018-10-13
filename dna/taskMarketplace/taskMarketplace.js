@@ -19,7 +19,7 @@ function userRead (userHash) {
 }
 
 function userUpdate (userHash) {
-  var sampleValue={"id":"1sbc593bcx1","username":"leon","vots":50,"password":"1xH7dE4Lxc2s$x","extraField":true};
+  var sampleValue={"username":"dakpek","vots":42,"extraField":true};
   var userOutHash = update("user", sampleValue, userHash);
   return userOutHash;
 }
@@ -98,6 +98,11 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
       return false;
+    case "userLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return false;
     default:
       // invalid entry name
       return false;
@@ -121,6 +126,11 @@ function validatePut (entryName, entry, header, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return false;
     case "task":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return false;
+    case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
@@ -153,6 +163,11 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
       return false;
+    case "userLink":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return false;
     default:
       // invalid entry name
       return false;
@@ -175,6 +190,11 @@ function validateDel (entryName, hash, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return false;
     case "task":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return false;
+    case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
@@ -202,6 +222,11 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
       // the action will ONLY be successfull if this returns true, so watch out!
       return false;
     case "task":
+      // be sure to consider many edge cases for validating
+      // do not just flip this to true without considering what that means
+      // the action will ONLY be successfull if this returns true, so watch out!
+      return false;
+    case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!

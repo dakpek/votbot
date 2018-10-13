@@ -5,10 +5,8 @@
       "Zome": "taskMarketplace",
       "FnName": "userCreate",
       "Input": {
-        "id": "1sbc593bcx1",
-        "username": "leon",
-        "vots": 50,
-        "password": "1xH7dE4Lxc2s$x"
+        "username": "dakpek",
+        "vots": 42
       },
       "Output": "%h%"
     },
@@ -18,10 +16,8 @@
       "FnName": "userRead",
       "Input": "%h%",
       "Output": {
-        "id": "1sbc593bcx1",
-        "username": "leon",
-        "vots": 50,
-        "password": "1xH7dE4Lxc2s$x"
+        "username": "dakpek",
+        "vots": 42
       }
     },
     {
