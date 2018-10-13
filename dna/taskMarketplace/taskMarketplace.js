@@ -8,54 +8,58 @@
 //  Exposed functions with custom logic https://developer.holochain.org/API_reference
 // -----------------------------------------------------------------
 
-function userCreate (userEntry) {
+function userCreate(userEntry) {
   var userHash = commit("user", userEntry);
+  commit('userLink', {
+    Links: [{ Base: App.Agent.Hash, Link: userHash, Tag: "userLink" }]
+  });
   return userHash;
 }
 
-function userRead (userHash) {
-  var user = get(userHash);
+function userRead() {
+  var userHash = getLinks(App.Agent.Hash, "userLink");
+  var user = get(userHash[0].Hash);
   return user;
 }
 
-function userUpdate (userHash) {
-  var sampleValue={"username":"dakpek","vots":42,"extraField":true};
+function userUpdate(userHash) {
+  var sampleValue = { "username": "dakpek", "vots": 42, "extraField": true };
   var userOutHash = update("user", sampleValue, userHash);
   return userOutHash;
 }
 
-function userDelete (userHash) {
+function userDelete(userHash) {
   var result = remove(userHash, "");
   return result;
 }
 
-function taskCreate (taskEntry) {
+function taskCreate(taskEntry) {
   var taskHash = commit("task", taskEntry);
   return taskHash;
 }
 
-function taskRead (taskHash) {
+function taskRead(taskHash) {
   var task = get(taskHash);
   return task;
 }
 
-function taskUpdate (taskHash) {
-  var sampleValue={"id":"12c23b23r","title":"clean the bathroom!","description":"it stinks!","pool":100,"createdAt":"2018-10-12T19:00:00","status":"open","extraField":true};
+function taskUpdate(taskHash) {
+  var sampleValue = { "id": "12c23b23r", "title": "clean the bathroom!", "description": "it stinks!", "pool": 100, "createdAt": "2018-10-12T19:00:00", "status": "open", "extraField": true };
   var taskOutHash = update("task", sampleValue, taskHash);
   return taskOutHash;
 }
 
-function taskDelete (taskHash) {
+function taskDelete(taskHash) {
   var result = remove(taskHash, "");
   return result;
 }
 
-function transferVots (params) {
+function transferVots(params) {
   // your custom code here
   return {};
 }
 
-function authenticate (params) {
+function authenticate(params) {
   // your custom code here
   return {};
 }
@@ -69,7 +73,11 @@ function authenticate (params) {
  * Called only when your source chain is generated
  * @return {boolean} success
  */
-function genesis () {
+function genesis() {
+  userCreate({
+    "username": "Cefi",
+    "vots": 50
+  });
   return true;
 }
 
@@ -86,26 +94,26 @@ function genesis () {
  * @param {object} sources - an array of strings containing the keys of any authors of this entry
  * @return {boolean} is valid?
  */
-function validateCommit (entryName, entry, header, pkg, sources) {
+function validateCommit(entryName, entry, header, pkg, sources) {
   switch (entryName) {
     case "user":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "task":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -118,26 +126,26 @@ function validateCommit (entryName, entry, header, pkg, sources) {
  * @param {object} sources - an array of strings containing the keys of any authors of this entry
  * @return {boolean} is valid?
  */
-function validatePut (entryName, entry, header, pkg, sources) {
+function validatePut(entryName, entry, header, pkg, sources) {
   switch (entryName) {
     case "user":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "task":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -151,26 +159,26 @@ function validatePut (entryName, entry, header, pkg, sources) {
  * @param {object} sources - an array of strings containing the keys of any authors of this entry
  * @return {boolean} is valid?
  */
-function validateMod (entryName, entry, header, replaces, pkg, sources) {
+function validateMod(entryName, entry, header, replaces, pkg, sources) {
   switch (entryName) {
     case "user":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "task":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -182,26 +190,26 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
  * @param {object} sources - an array of strings containing the keys of any authors of this entry
  * @return {boolean} is valid?
  */
-function validateDel (entryName, hash, pkg, sources) {
+function validateDel(entryName, hash, pkg, sources) {
   switch (entryName) {
     case "user":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "task":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -214,26 +222,26 @@ function validateDel (entryName, hash, pkg, sources) {
  * @param {object} sources - an array of strings containing the keys of any authors of this entry
  * @return {boolean} is valid?
  */
-function validateLink (entryName, baseHash, links, pkg, sources) {
+function validateLink(entryName, baseHash, links, pkg, sources) {
   switch (entryName) {
     case "user":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "task":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "userLink":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -242,7 +250,7 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
  * @param {string} entryName - the name of entry to validate
  * @return {*} the data required for validation
  */
-function validatePutPkg (entryName) {
+function validatePutPkg(entryName) {
   return null;
 }
 
@@ -251,7 +259,7 @@ function validatePutPkg (entryName) {
  * @param {string} entryName - the name of entry to validate
  * @return {*} the data required for validation
  */
-function validateModPkg (entryName) {
+function validateModPkg(entryName) {
   return null;
 }
 
@@ -260,7 +268,7 @@ function validateModPkg (entryName) {
  * @param {string} entryName - the name of entry to validate
  * @return {*} the data required for validation
  */
-function validateDelPkg (entryName) {
+function validateDelPkg(entryName) {
   return null;
 }
 
@@ -269,6 +277,6 @@ function validateDelPkg (entryName) {
  * @param {string} entryName - the name of entry to validate
  * @return {*} the data required for validation
  */
-function validateLinkPkg (entryName) {
+function validateLinkPkg(entryName) {
   return null;
 }
