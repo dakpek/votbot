@@ -81,7 +81,7 @@ function authenticate(params) {
  */
 function genesis() {
   userCreate({
-    "username": JSON.Stringify(App.Agent.Hash),
+    "username": JSON.stringify(App.Agent.Hash),
     "vots": 50
   });
   return true;
