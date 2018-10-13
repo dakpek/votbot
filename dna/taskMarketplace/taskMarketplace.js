@@ -13,11 +13,17 @@ function userCreate(userEntry) {
   commit('userLink', {
     Links: [{ Base: App.Agent.Hash, Link: userHash, Tag: "userLink" }]
   });
+  commit('userLink', {
+    Links: [{ Base: App.DNA.Hash, Link: userHash, Tag: "allUsers" }]
+  });
   return userHash;
 }
 
 function userRead() {
   var userHash = getLinks(App.Agent.Hash, "userLink");
+  var allUsers = getLinks(App.DNA.Hash, "allUsers");
+  console.log('all users: ', JSON.stringify(allUsers))
+  console.log('me: ', JSON.stringify(userHash))
   var user = get(userHash[0].Hash);
   return user;
 }
