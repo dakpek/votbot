@@ -52,7 +52,7 @@
 
         # Zome Name
         # The name of this code module.
-        "Name": "task marketplace",
+        "Name": "taskMarketplace",
 
         # Zome Description
         # What is the purpose of this module?
@@ -64,7 +64,7 @@
 
         # Code File
         # Points to the main script file for this Zome.
-        "CodeFile": "task marketplace.js",
+        "CodeFile": "taskMarketplace.js",
 
         # Zome Entries
         # Data stored and tracked by your Zome.
@@ -164,7 +164,7 @@
 
       # Name
       # Name of the Test Set
-      "Name": "task marketplace",
+      "Name": "taskMarketplace",
       "TestSet": {
         "Tests": [
           {
@@ -175,7 +175,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -202,7 +202,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -229,7 +229,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -251,7 +251,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -273,7 +273,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -302,7 +302,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -331,7 +331,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -353,7 +353,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -375,7 +375,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test
@@ -397,7 +397,7 @@
 
             # Zome
             # The zome this test is related to
-            "Zome": "task marketplace",
+            "Zome": "taskMarketplace",
 
             # Function Name
             # The function to test

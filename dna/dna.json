@@ -12,10 +12,10 @@
   },
   "Zomes": [
     {
-      "Name": "task marketplace",
+      "Name": "taskMarketplace",
       "Description": "a marketplace where members can earn vots for tasks.",
       "RibosomeType": "js",
-      "CodeFile": "task marketplace.js",
+      "CodeFile": "taskMarketplace.js",
       "Entries": [
         {
           "Name": "user",

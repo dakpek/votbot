@@ -2,7 +2,7 @@
   "Tests": [
     {
       "Convey": "auto-generated test for userCreate",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "userCreate",
       "Input": {
         "id": "1sbc593bcx1",
@@ -14,7 +14,7 @@
     },
     {
       "Convey": "auto-generated test for userRead",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "userRead",
       "Input": "%h%",
       "Output": {
@@ -26,21 +26,21 @@
     },
     {
       "Convey": "auto-generated test for userUpdate",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "userUpdate",
       "Input": "%h%",
       "Output": "%h%"
     },
     {
       "Convey": "auto-generated test for userDelete",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "userDelete",
       "Input": "%h%",
       "Output": "%h%"
     },
     {
       "Convey": "auto-generated test for taskCreate",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "taskCreate",
       "Input": {
         "id": "12c23b23r",
@@ -54,7 +54,7 @@
     },
     {
       "Convey": "auto-generated test for taskRead",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "taskRead",
       "Input": "%h%",
       "Output": {
@@ -68,28 +68,28 @@
     },
     {
       "Convey": "auto-generated test for taskUpdate",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "taskUpdate",
       "Input": "%h%",
       "Output": "%h%"
     },
     {
       "Convey": "auto-generated test for taskDelete",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "taskDelete",
       "Input": "%h%",
       "Output": "%h%"
     },
     {
       "Convey": "auto-generated test for transferVots",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "transferVots",
       "Input": "",
       "Output": {}
     },
     {
       "Convey": "auto-generated test for authenticate",
-      "Zome": "task marketplace",
+      "Zome": "taskMarketplace",
       "FnName": "authenticate",
       "Input": "",
       "Output": {}
