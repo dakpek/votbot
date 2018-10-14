@@ -1,0 +1,39 @@
+.container {
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  justify-content: center;
+  /* align-self: center; */
+  height: 10vh;
+  background-color: blue;
+}
+
+.mainpage {
+  justify-content: center;
+  /* align-self: center; */
+  height: 90vh;
+  background-color: grey;
+  padding: 5vh;
+}
+
+.tasks {
+  justify-content: center;
+  margin: 5vh;
+  /* align-self: center; */
+  height: 60vh;
+  background-color: yellow;
+}
+
+.addtask {
+  position: relative;
+  border-radius: 50px;
+  border: solid 2px green;
+  left: 72vw;
+  width: 12vw;
+  height: 12vw;
+
+}
