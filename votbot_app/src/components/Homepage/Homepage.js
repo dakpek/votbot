@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Homepage.css'
+import TaskList from '../TaskList'
 
 class Homepage extends Component {
   constructor(props) {
@@ -32,7 +33,9 @@ class Homepage extends Component {
           <div> vots: {this.state.user.vots}</div>
         </div>
         <div className="mainpage">
-          <div className="tasks"></div>
+          <div className="tasks">
+            <TaskList user={this.state.user}/>
+          </div>
           <div className="addtask"></div>
         </div>
       </div>
