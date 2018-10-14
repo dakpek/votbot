@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
-#backgroundC {
-  background-color: yellow;
+.card {
+  width: 300px;
+  height: auto;
+  background-color: #d4d2d1;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+}
+
+.cardList {
+
 }

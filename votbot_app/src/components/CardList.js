@@ -42,7 +42,7 @@ class CardList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="cardList">
         {this.state.tasks.length ?
           this.state.tasks.map( (task, i) =>
           <Card tasks={task} />)

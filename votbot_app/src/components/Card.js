@@ -16,7 +16,7 @@ class Card extends React.Component {
 
   render() {
     return(
-      <div key={this.props.tasks.id}>
+      <div className="card" key={this.props.tasks.id}>
         <h3>{this.props.tasks.title}</h3>
         <p>{this.props.tasks.description}</p>
         <p>{this.props.tasks.pool}</p>
