@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.card {
+  width: 300px;
+  height: auto;
+  background-color: #d4d2d1;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+}
+
+.cardList {
+
+}

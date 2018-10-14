@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Route, Link } from 'react-router-dom'
 import Homepage from './components/Homepage'
 import Form from './components/Form'
+import CardList from './components/CardList'
 
 class App extends Component {
 
