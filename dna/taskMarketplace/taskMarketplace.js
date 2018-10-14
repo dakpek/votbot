@@ -22,9 +22,8 @@ function userCreate(userEntry) {
 function userRead() {
   var userHash = getLinks(App.Agent.Hash, "userLink");
   var allUsers = getLinks(App.DNA.Hash, "allUsers");
-  console.log('all users: ', JSON.stringify(allUsers))
-  console.log('me: ', JSON.stringify(userHash))
   var user = get(userHash[0].Hash);
+  user.userHash = userHash
   return user;
 }
 
@@ -49,30 +48,40 @@ function taskCreate(taskEntry) {
   commit('taskLink', {
     Links: [{ Base: App.DNA.Hash, Link: taskHash, Tag: "allTasks" }]
   });
-  console.log(taskHash);
+  console.log(taskHash)
   return taskHash;
-}
+};
 
 function taskRead() {
-  var taskHash = getLinks(App.Agent.Hash, "taskLink");
-  var allTasks = getLinks(App.DNA.Hash, "allTasks");
+
   var allTasksFull = getLinks(App.DNA.Hash, "allTasks", { Load: true });
-  console.log('all users: ', JSON.stringify(allTasks))
-  console.log('me: ', JSON.stringify(taskHash))
-  console.log('all tasks full: ', allTasksFull)
+
   return allTasksFull;
-}
+};
 
 function taskUpdate(params) {
+  if(params.transfer){
+    transferVots(params)
+  };
   var taskHash = params.taskHash;
   var task = get(taskHash);
+  //limit update options
+  //run transfer function from within task update based on argument
+  if (params.target === "title"){
+    console.error("User trying to change title of a task")
+    return "Can't change title of an already existing task"
+  }
   task[params.target] = params.newValue
   var taskOutHash = update("task", task, taskHash);
   return taskOutHash;
 }
 
-function taskDelete(taskHash) {
-  var result = remove(taskHash, "");
+function taskDelete(params) {
+  var taskHash = params.taskHash;
+  var task = get(taskHash);
+  task["status"] = "closed"
+  var taskOutHash = update("task", task, taskHash)
+  var result = remove(taskOutHash, "task assumed");
   return result;
 }
 
@@ -82,15 +91,11 @@ function  transferVots(params) {
   //If (transfer is user --> task ) {amount<0}, else if (transfer is task --> user) {amount>0}
   var user = userRead();
   var task = taskRead(params.receiverHash);
-  console.log("user: " + JSON.stringify(user))
-  console.log("task: " + JSON.stringify(task))
+  
   user.vots = Number(Number(user.vots) + Number(params.amount))
-  console.log('task----', task[0].Entry.pool)
   var pool = task[0].Entry.pool
-  console.log('pool----', pool)
   pool = Number(pool - Number(params.amount))
-  console.log("user.vots:", user.vots)
-  console.log("task.pool:", pool)
+
   userUpdate({
     target: 'vots',
     newValue: Number(user.vots)
@@ -101,10 +106,7 @@ function  transferVots(params) {
     newValue: pool
   });
 
-  console.log("returning: " + JSON.stringify(user) + JSON.stringify(task));
-  console.log("LOGGING READ FUNCTIONS USER - TASK")
-  console.log(JSON.stringify(userRead()))
-  console.log(JSON.stringify(taskRead()))
+
   return "success";
 }
 
