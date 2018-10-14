@@ -3,13 +3,14 @@ import React, { Component } from 'react'
 import { BrowserRouter as Route, Link } from 'react-router-dom'
 import Homepage from './Homepage'
 import Form from './components/Form'
+import CardList from './components/CardList'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: null
+      //data: null
     };
   }
 
@@ -33,9 +34,10 @@ class App extends Component {
       <div>
         <header className="App-header">
         <i className="fa fa-flag" aria-hidden="true"></i>
-        <h1>Hi</h1>
+        <CardList />
         <div id="content">
           <Route path='/' exact component={ Homepage } />
+          <Route path='/taskread' component={ CardList } />
         </div>
         </header>
       </div>
