@@ -19,8 +19,12 @@ function userCreate(userEntry) {
   return userHash;
 }
 
-function userRead() {
-  var userHash = getLinks(App.Agent.Hash, "userLink");
+function userRead(params) {
+  if(params && params.agentHash){
+    var userHash = getLinks(params.agentHash, "userLink")
+  }else{
+    var userHash = getLinks(App.Agent.Hash, "userLink");
+  }
   var allUsers = getLinks(App.DNA.Hash, "allUsers");
   var user = get(userHash[0].Hash);
   user.userHash = userHash
@@ -93,6 +97,10 @@ function  transferVots(params) {
   var task = taskRead(params.receiverHash);
   
   user.vots = Number(Number(user.vots) + Number(params.amount))
+  if(user.vots < 0){
+    console.error("User doesn't have enough Vots for this transaction" )
+    return ("Not enough Vots")
+  };
   var pool = task[0].Entry.pool
   pool = Number(pool - Number(params.amount))
 
