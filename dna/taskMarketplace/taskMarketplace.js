@@ -207,6 +207,12 @@ function validatePut(entryName, entry, header, pkg, sources) {
     case "task":
     console.log("this is the source object")
     console.log(JSON.stringify(sources))
+    console.log("this is the entry object")
+    console.log(JSON.stringify(entry))
+    console.log("this is the header object")
+    console.log(JSON.stringify(header))
+    console.log("this is the pkg object")
+    console.log(JSON.stringify(pkg))
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
